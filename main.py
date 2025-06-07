@@ -23,7 +23,7 @@ def read_username():
 
 
 @app.get("/username/all")
-def read_all_usernames(limit:int | None = Query(..., ge=1, le=10)):
+def read_all_usernames(limit:int | None = Query(default=10, ge=1, le=10)):
     print(f"Limit: {limit}")
     if limit is not None:
         return {"usernames": ["Junaid Hussain"]}
