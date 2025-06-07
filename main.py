@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, Path,Query
 
 app = FastAPI()
 
@@ -23,7 +23,7 @@ def read_username():
 
 
 @app.get("/username/all")
-def read_all_usernames(limit:int | None = None):
+def read_all_usernames(limit:int | None = Query(..., ge=1, le=10)):
     print(f"Limit: {limit}")
     if limit is not None:
         return {"usernames": ["Junaid Hussain"]}
